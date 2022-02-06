@@ -1,3 +1,10 @@
+## 2.3.21 (2022-02-06)
+
+### Chores
+
+
+bump [@sealsystems](https://github.com/sealsystems)/log from 2.3.3 to 2.4.2 ([dcbe120](https://github.com/sealsystems/node-tlscert/commit/dcbe120))
+
 ## 2.3.20 (2021-05-31)
 
 ### Chores
