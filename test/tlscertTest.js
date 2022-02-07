@@ -3,7 +3,7 @@
 const path = require('path');
 
 const assert = require('assertthat');
-const nodeenv = require('nodeenv');
+const { nodeenv } = require('nodeenv');
 
 const tlscert = require('../lib/tlscert');
 

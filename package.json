@@ -23,12 +23,12 @@
   "dependencies": {
     "@sealsystems/log": "2.4.2",
     "lodash.clonedeep": "4.5.0",
-    "nodeenv": "1.1.0",
-    "processenv": "1.1.0"
+    "getenv": "1.0.0"
   },
   "devDependencies": {
     "@sealsystems/eslint-config-es": "3.7.6",
-    "@sealsystems/mocha": "4.2.3"
+    "@sealsystems/mocha": "4.2.3",
+    "nodeenv": "3.0.74"
   },
   "repository": {
     "type": "git",
