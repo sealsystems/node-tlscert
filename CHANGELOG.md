@@ -1,3 +1,10 @@
+## 2.3.22 (2022-02-07)
+
+### Chores
+
+
+Use getenv and updated deps ([f16b8f7](https://github.com/sealsystems/node-tlscert/commit/f16b8f7))
+
 ## 2.3.21 (2022-02-06)
 
 ### Chores
