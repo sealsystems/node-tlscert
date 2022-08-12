@@ -1,3 +1,10 @@
+## 2.4.0 (2022-08-12)
+
+### Features
+
+
+New certs ([543fe1c](https://github.com/sealsystems/node-tlscert/commit/543fe1c))
+
 ## 2.3.22 (2022-02-07)
 
 ### Chores
