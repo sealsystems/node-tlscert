@@ -1,3 +1,10 @@
+## 2.4.1 (2022-11-29)
+
+### Chores
+
+
+Use Node.js 16.18.1 ([afa40ca](https://github.com/sealsystems/node-tlscert/commit/afa40ca))
+
 ## 2.4.0 (2022-08-12)
 
 ### Features
