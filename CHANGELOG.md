@@ -1,3 +1,10 @@
+## 2.4.2 (2022-12-29)
+
+### Chores
+
+
+Use Node.js 16.19.0 ([bf86ebb](https://github.com/sealsystems/node-tlscert/commit/bf86ebb))
+
 ## 2.4.1 (2022-11-29)
 
 ### Chores
