@@ -1,3 +1,10 @@
+## 2.4.3 (2023-03-02)
+
+### Chores
+
+
+Use Node.js 16.19.1 ([4eb2fa9](https://github.com/sealsystems/node-tlscert/commit/4eb2fa9))
+
 ## 2.4.2 (2022-12-29)
 
 ### Chores
