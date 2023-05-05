@@ -1,3 +1,10 @@
+## 2.5.2 (2023-05-05)
+
+### Chores
+
+
+fixed repo type ([bb3fec8](https://github.com/sealsystems/node-tlscert/commit/bb3fec8))
+
 ## 2.5.1 (2023-05-05)
 
 ### Chores
