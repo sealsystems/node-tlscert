@@ -1,3 +1,10 @@
+## 2.5.0 (2023-05-05)
+
+### Features
+
+
+new function getExternal ([96f7def](https://github.com/sealsystems/node-tlscert/commit/96f7def))
+
 ## 2.4.3 (2023-03-02)
 
 ### Chores
