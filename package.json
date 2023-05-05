@@ -7,7 +7,7 @@
     "email": "opensource@sealsystems.de",
     "url": "https://www.sealsystems.de"
   },
-  "license": "SEAL End User License",
+  "license": "MIT",
   "scripts": {
     "bot": "bot",
     "release": "release",
@@ -35,7 +35,7 @@
     "url": "https://github.com/sealsystems/node-tlscert"
   },
   "release": {
-    "extends": "@sealsystems/semantic-release/node-binary"
+    "extends": "@sealsystems/semantic-release/node-module"
   },
   "publishConfig": {
     "access": "public"
