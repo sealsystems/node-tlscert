@@ -173,4 +173,197 @@ suite('tlscert', () => {
       });
     });
   });
+
+  suite('getExternal', () => {
+    test('is a function.', async () => {
+      assert.that(tlscert.getExternal).is.ofType('function');
+    });
+
+    suite('keystore', () => {
+      test('is an object.', async () => {
+        const keystore = await tlscert.getExternal();
+
+        assert.that(keystore).is.ofType('object');
+      });
+
+      suite('using environment variable TLS_DIR', () => {
+        suite('that is not set', () => {
+          let restoreEnvironment;
+
+          suiteSetup((done) => {
+            const restore = nodeenv('TLS_DIR', undefined);
+
+            restoreEnvironment = restore;
+            done();
+          });
+
+          suiteTeardown((done) => {
+            restoreEnvironment();
+            done();
+          });
+
+          test('contains a default key.', async () => {
+            const keystore = await tlscert.getExternal();
+
+            assert.that(keystore.key).is.startingWith('-----BEGIN RSA PRIVATE KEY-----');
+          });
+
+          test('contains a default certificate.', async () => {
+            const keystore = await tlscert.getExternal();
+
+            assert.that(keystore.cert).is.startingWith('-----BEGIN CERTIFICATE-----');
+          });
+
+          test('does not contain a default ca certificate.', async () => {
+            const keystore = await tlscert.getExternal();
+
+            assert.that(keystore.ca).is.undefined();
+          });
+
+          test('sets isFallback to true.', async () => {
+            const keystore = await tlscert.getExternal();
+
+            assert.that(keystore.isFallback).is.equalTo(true);
+          });
+        });
+
+        suite('that is set to a directory', () => {
+          let restoreEnvironment;
+
+          suiteSetup((done) => {
+            const restore = nodeenv('TLS_DIR', path.join(__dirname, 'keyCertCa'));
+
+            restoreEnvironment = restore;
+            done();
+          });
+
+          suiteTeardown((done) => {
+            restoreEnvironment();
+            done();
+          });
+
+          test('throws an error if the configured directory does not exist.', async () => {
+            const restore = nodeenv('TLS_DIR', path.join(__dirname, 'does-not-exist'));
+
+            await assert
+              .that(async () => {
+                await tlscert.getExternal();
+              })
+              .is.throwingAsync();
+            restore();
+          });
+
+          test('contains a key.', async () => {
+            const keystore = await tlscert.getExternal();
+
+            assert.that(keystore.key).is.startingWith('key');
+          });
+
+          test('contains a certificate.', async () => {
+            const keystore = await tlscert.getExternal();
+
+            assert.that(keystore.cert).is.startingWith('cert');
+          });
+
+          test('contains a ca certificate.', async () => {
+            const keystore = await tlscert.getExternal();
+
+            assert.that(keystore.ca).is.startingWith('ca');
+          });
+
+          test('sets isFallback to false.', async () => {
+            const keystore = await tlscert.getExternal();
+
+            assert.that(keystore.isFallback).is.equalTo(false);
+          });
+
+          suite('handles optional types', () => {
+            test('ignores a missing ca certificate.', async () => {
+              const restore = nodeenv('TLS_DIR', path.join(__dirname, 'keyCert'));
+
+              await assert
+                .that(async () => {
+                  await tlscert.getExternal();
+                })
+                .is.not.throwingAsync();
+              restore();
+            });
+
+            test('throws an error if the key is missing.', async () => {
+              const restore = nodeenv('TLS_DIR', path.join(__dirname, 'certCa'));
+
+              await assert
+                .that(async () => {
+                  await tlscert.getExternal();
+                })
+                .is.throwingAsync();
+              restore();
+            });
+
+            test('throws an error if the certificate is missing.', async () => {
+              const restore = nodeenv('TLS_DIR', path.join(__dirname, 'keyCa'));
+
+              await assert
+                .that(async () => {
+                  await tlscert.getExternal();
+                })
+                .is.throwingAsync();
+              restore();
+            });
+          });
+        });
+      });
+
+      suite('using environment variable TLS_EXTERNAL_DIR', () => {
+        let restoreEnvironment;
+
+        suiteSetup((done) => {
+          const restore = nodeenv('TLS_EXTERNAL_DIR', path.join(__dirname, 'keyCertCaExt'));
+
+          restoreEnvironment = restore;
+          done();
+        });
+
+        suiteTeardown((done) => {
+          restoreEnvironment();
+          done();
+        });
+
+        test('throws an error if the configured directory does not exist.', async () => {
+          const restore = nodeenv('TLS_EXTERNAL_DIR', path.join(__dirname, 'does-not-exist'));
+
+          await assert
+            .that(async () => {
+              await tlscert.getExternal();
+            })
+            .is.throwingAsync();
+          restore();
+        });
+
+        test('contains a key.', async () => {
+          const keystore = await tlscert.getExternal();
+
+          assert.that(keystore.key).is.startingWith('external key');
+        });
+
+        test('contains a certificate.', async () => {
+          const keystore = await tlscert.getExternal();
+
+          assert.that(keystore.cert).is.startingWith('external cert');
+        });
+
+        test('contains a ca certificate.', async () => {
+          const keystore = await tlscert.getExternal();
+
+          assert.that(keystore.ca).is.startingWith('external ca');
+        });
+
+        test('sets isFallback to false.', async () => {
+          const keystore = await tlscert.getExternal();
+
+          assert.that(keystore.isFallback).is.equalTo(false);
+        });
+      });
+    });
+  });
 });
