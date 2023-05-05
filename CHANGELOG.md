@@ -1,3 +1,10 @@
+## 2.5.1 (2023-05-05)
+
+### Chores
+
+
+Update update-build-config.yml ([af6263f](https://github.com/sealsystems/node-tlscert/commit/af6263f))
+
 ## 2.5.0 (2023-05-05)
 
 ### Features
