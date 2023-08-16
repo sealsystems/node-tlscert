@@ -1,6 +1,7 @@
 'use strict';
 
 const path = require('path');
+const tls = require('tls');
 
 const assert = require('assertthat');
 const { nodeenv } = require('nodeenv');
@@ -362,6 +363,127 @@ suite('tlscert', () => {
           const keystore = await tlscert.getExternal();
 
           assert.that(keystore.isFallback).is.equalTo(false);
+        });
+      });
+    });
+  });
+
+  suite.only('getTlsMinVersion', () => {
+    test('is a function.', async () => {
+      assert.that(tlscert.getTlsMinVersion).is.ofType('function');
+    });
+
+    suite('version', () => {
+      test('is a string and equal to tls.DEFAULT_MIN_VERSION.', async () => {
+        const version = await tlscert.getTlsMinVersion();
+        console.log('version: ', version);
+        assert.that(version).is.ofType('string');
+        assert.that(version).is.equalTo(tls.DEFAULT_MIN_VERSION);
+      });
+
+      suite('using environment variable TLS_PROTOCOL', () => {
+        suite('that is not set', () => {
+          let restoreEnvironment;
+
+          suiteSetup((done) => {
+            const restore = nodeenv('TLS_PROTOCOL', undefined);
+            restoreEnvironment = restore;
+            done();
+          });
+
+          suiteTeardown((done) => {
+            restoreEnvironment();
+            done();
+          });
+
+          test('contains a default value.', async () => {
+            const version = await tlscert.getTlsMinVersion();
+            assert.that(version).is.equalTo(tls.DEFAULT_MIN_VERSION);
+          });
+        });
+      });
+
+      suite('that is set to v1', () => {
+        let restoreEnvironment;
+
+        suiteSetup((done) => {
+          const restore = nodeenv('TLS_PROTOCOL', 'TLSv1_method');
+
+          restoreEnvironment = restore;
+          done();
+        });
+
+        suiteTeardown((done) => {
+          restoreEnvironment();
+          done();
+        });
+
+        test('set version to v1.', async () => {
+          const value = await tlscert.getTlsMinVersion();
+          assert.that(value).is.equalTo('TLSv1');
+        });
+      });
+
+      suite('that is set to v1.1', () => {
+        let restoreEnvironment;
+
+        suiteSetup((done) => {
+          const restore = nodeenv('TLS_PROTOCOL', 'TLSv1_1_method');
+
+          restoreEnvironment = restore;
+          done();
+        });
+
+        suiteTeardown((done) => {
+          restoreEnvironment();
+          done();
+        });
+
+        test('set version to v1.1', async () => {
+          const value = await tlscert.getTlsMinVersion();
+          assert.that(value).is.equalTo('TLSv1.1');
+        });
+      });
+
+      suite('that is set to v1.2', () => {
+        let restoreEnvironment;
+
+        suiteSetup((done) => {
+          const restore = nodeenv('TLS_PROTOCOL', 'TLSv1_2_method');
+
+          restoreEnvironment = restore;
+          done();
+        });
+
+        suiteTeardown((done) => {
+          restoreEnvironment();
+          done();
+        });
+
+        test('set version to v1.2', async () => {
+          const value = await tlscert.getTlsMinVersion();
+          assert.that(value).is.equalTo('TLSv1.2');
+        });
+      });
+
+      suite('that is set to v1.3', () => {
+        let restoreEnvironment;
+
+        suiteSetup((done) => {
+          const restore = nodeenv('TLS_PROTOCOL', 'TLSv1_3_method');
+
+          restoreEnvironment = restore;
+          done();
+        });
+
+        suiteTeardown((done) => {
+          restoreEnvironment();
+          done();
+        });
+
+        test('set version to v1.3', async () => {
+          const value = await tlscert.getTlsMinVersion();
+          assert.that(value).is.equalTo('TLSv1.3');
         });
       });
     });

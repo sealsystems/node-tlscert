@@ -23,7 +23,8 @@
   "dependencies": {
     "@sealsystems/log": "2.4.2",
     "getenv": "1.0.0",
-    "lodash.clonedeep": "4.5.0"
+    "lodash.clonedeep": "4.5.0",
+    "tls": "0.0.1"
   },
   "devDependencies": {
     "@sealsystems/eslint-config-es": "3.7.8",
