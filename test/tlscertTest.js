@@ -368,7 +368,7 @@ suite('tlscert', () => {
     });
   });
 
-  suite.only('getTlsMinVersion', () => {
+  suite('getTlsMinVersion', () => {
     test('is a function.', async () => {
       assert.that(tlscert.getTlsMinVersion).is.ofType('function');
     });
