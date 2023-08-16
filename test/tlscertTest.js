@@ -486,6 +486,27 @@ suite('tlscert', () => {
           assert.that(value).is.equalTo('TLSv1.3');
         });
       });
+
+      suite('use environment variable if no mapping available', () => {
+        let restoreEnvironment;
+
+        suiteSetup((done) => {
+          const restore = nodeenv('TLS_PROTOCOL', 'bla');
+
+          restoreEnvironment = restore;
+          done();
+        });
+
+        suiteTeardown((done) => {
+          restoreEnvironment();
+          done();
+        });
+
+        test('set version to bla', async () => {
+          const value = await tlscert.getTlsMinVersion();
+          assert.that(value).is.equalTo('bla');
+        });
+      });
     });
   });
 });
