@@ -1,3 +1,10 @@
+## 2.6.0 (2023-08-17)
+
+### Features
+
+
+make tls min version configurable, [PLS-1771](make tls min version configurable. https://jira.sealsystems.de/jira/browse/PLS-1771) ([6037bf7](https://github.com/sealsystems/node-tlscert/commit/6037bf7))
+
 ## 2.5.2 (2023-05-05)
 
 ### Chores
