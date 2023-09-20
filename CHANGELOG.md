@@ -1,3 +1,10 @@
+## 2.6.1 (2023-09-20)
+
+### Chores
+
+
+cp sudoers ([afbc13f](https://github.com/sealsystems/node-tlscert/commit/afbc13f))
+
 ## 2.6.0 (2023-08-17)
 
 ### Features
