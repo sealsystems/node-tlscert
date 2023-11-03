@@ -1,3 +1,10 @@
+## 2.6.2 (2023-11-03)
+
+### Chores
+
+
+update node version to 20.8.1 ([f930de1](https://github.com/sealsystems/node-tlscert/commit/f930de1))
+
 ## 2.6.1 (2023-09-20)
 
 ### Chores
