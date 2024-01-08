@@ -1,3 +1,10 @@
+## 2.6.3 (2024-01-08)
+
+### Bug Fixes
+
+
+fix build config & use variable TLS_MIN_VERSION ([1c2e087](https://github.com/sealsystems/node-tlscert/commit/1c2e087))
+
 ## 2.6.2 (2023-11-03)
 
 ### Chores
