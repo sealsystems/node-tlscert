@@ -487,11 +487,14 @@ suite('tlscert', () => {
         });
       });
 
-      suite('use environment variable if no mapping available', () => {
+      suite('use environment variable TLS_MIN_VERSION if no mapping available', () => {
         let restoreEnvironment;
 
         suiteSetup((done) => {
-          const restore = nodeenv('TLS_PROTOCOL', 'bla');
+          const restore = nodeenv({
+            TLS_PROTOCOL: 'bla',
+            TLS_MIN_VERSION: 'blub'
+          });
 
           restoreEnvironment = restore;
           done();
@@ -502,9 +505,9 @@ suite('tlscert', () => {
           done();
         });
 
-        test('set version to bla', async () => {
+        test('set version to blub', async () => {
           const value = await tlscert.getTlsMinVersion();
-          assert.that(value).is.equalTo('bla');
+          assert.that(value).is.equalTo('blub');
         });
       });
     });
