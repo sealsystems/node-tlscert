@@ -1,3 +1,10 @@
+## 2.6.4 (2024-03-04)
+
+### Chores
+
+
+Update package.json ([e4a0c79](https://github.com/sealsystems/node-tlscert/commit/e4a0c79))
+
 ## 2.6.3 (2024-01-08)
 
 ### Bug Fixes
