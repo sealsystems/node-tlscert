@@ -1,3 +1,10 @@
+## 2.6.5 (2024-05-28)
+
+### Chores
+
+
+Update package.json ([f2ddf1f](https://github.com/sealsystems/node-tlscert/commit/f2ddf1f))
+
 ## 2.6.4 (2024-03-04)
 
 ### Chores
