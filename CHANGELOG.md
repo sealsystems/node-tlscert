@@ -1,3 +1,10 @@
+## 2.6.7 (2024-07-08)
+
+### Chores
+
+
+Trigger release ([054fff2](https://github.com/sealsystems/node-tlscert/commit/054fff2))
+
 ## 2.6.6 (2024-06-10)
 
 ### Chores
