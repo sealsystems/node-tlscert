@@ -1,3 +1,10 @@
+## 2.6.10 (2025-02-03)
+
+### Bug Fixes
+
+
+updated deps ([76bca5c](https://github.com/sealsystems/node-tlscert/commit/76bca5c))
+
 ## 2.6.9 (2025-01-08)
 
 ### Bug Fixes
